@@ -5,7 +5,7 @@ body {
   flex-direction: column;
   height: 95vh;
   width: 95%;
-  background: rgb(56, 135, 199);
+  background-color: rgb(56, 135, 199);
 }
 
 h1 {

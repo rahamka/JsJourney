@@ -1,85 +1,58 @@
-// Lexical Scope:
-// A function we're creating and inside
-// that we're creating a variables and inside that
-// function we're creating another function and
-// inside that function we're using the variables
-// that we've declared in the parent function.
+// All Scopes in JavaScript.
 
-// Example:
+// Lexical Scope in JavaScript.
+
 function parentFun() {
-  let value = 10;
+  let username = "Ahmad";
+  function add() {
+    console.log(5 + 3);
+  }
   function childFun() {
-    console.log(value);
+    console.log(username); // closure
+    add();
   }
   childFun();
 }
 
 parentFun();
 
-// Global Scope.
-// When we're declaring the variables in the
-// Global scope using let, const or when
-// we're declaring the variables using var in
-// both conditions variables will be in the Global scope.
-// Example:
+// Global Scope in JavaScript.
 
-let GlobalVar = 10;
-const GlobalVar2 = 5;
-var GlobalVar3 = 15;
+let num1 = 55;
+const num2 = 56; // => const, let are string in the script scope
+var num3 = 57; // => var is storing in the Global scope.
 
-// or
+console.log(num1, num2, num3);
 
-if (true) {
-  var GlobalVar00 = 99;
+function printFun() {
+  console.log(num1);
 }
 
-console.log(GlobalVar00);
+printFun();
 
-// but i'll not work inside the function
-
-function GlobalFun() {
-  var gbVariable = 55;
-}
-
-try {
-  console.log(gbVariable); // ❎
-} catch {
-  console.log(Error());
-}
-// Note: these all are the conditions that works in Global scope.
-
-// Local Scope
-// A variables which we're declaring inside  the functions/blocks called Local scope variables.
-// Example:
-
+// Local Scope in JavaScript.
 function localFun() {
-  let localVar = "Ahmad";
-  console.log(localVar); // ✔
+  var ifVariable = false; // => false = 0
+  console.log(ifVariable + 1); // 1
 }
 
 localFun();
-try {
-  console.log(localVar); // ❎
-} catch {
-  console.log(Error());
-}
-// Block scope.
-if (true) {
-  var blockVar = 44;
-  let localVar2 = "ali";
-  console.log(localVar2); // ✔
-}
 
-try {
-  console.log(localVar2); // ❎
-} catch {
-  console.log(Error());
-}
-console.log(blockVar); // works
+// Objects in JavaScript.
 
-// using  for loop
-for (let i = 0; i <= 2; i++) {
-  var forVar = "shoaib";
-}
+console.log("Objects in JavaScript.");
 
-console.log(forVar);
+let studentData = {
+  studentName: "Shoaib",
+  studentRoll: 112,
+  Class: "XII",
+  DOB: "12-05-2010",
+};
+
+console.log(studentData["DOB"]);
+
+Object.seal(studentData);
+
+studentData.Class = "XI";
+
+console.log(studentData.Class);
