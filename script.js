@@ -1,25 +1,19 @@
-// My understanding for Hoisting in Javascript?
-// in Javascript when we're using variables or functions before declaration them that is called Hoisting.
-// Ex.
-console.log(a); // undefined
-var a = 5;
+let btn = document.getElementById("btn");
+let paraElement = document.getElementById("para");
+let h1 = document.createElement("h1");
+h1.innerText = "Lexical and Block Scope";
+h1.setAttribute("id", "para");
 
-// why a prints undefined?
-// because when we are run the code then two phases Javascript runs
-// Memory Creation phase.
-// Code Execution phase.
+let deleteVal = true;
 
-/*
-1. when Memory Execution phase runs then it gives value to all the variables undefined if they've not defined value
-2. it immediately runs the var and gives undefined
-3. but if there is 
-   console.log(aa); 
-   let aa = 5;
-   then this code gives ReferenceError because Javascript didn't initialized undefined to let and const created variables.
-4. if there is an 
-   add(); 
-   function add(){
-   console.log(2+4)
-   }; 
-   then this function will run because in Javascript in Memory phase all the function are stored.
- */
+btn.addEventListener("click", () => {
+  if (deleteVal == true) {
+    document.body.firstElementChild.remove();
+    deleteVal = false;
+    btn.innerText = "Undo";
+  } else {
+    document.body.prepend(h1);
+    btn.innerText = "Delete Element";
+    deleteVal = true;
+  }
+});
