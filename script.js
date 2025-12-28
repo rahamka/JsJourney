@@ -1,20 +1,37 @@
-function a(b) {
-  // here a is Higher Order Function.
-  console.dir(b);
-  b();
+let hoursEl = document.getElementById("hours");
+let minutesEl = document.getElementById("minutes");
+let secondsEl = document.getElementById("seconds");
+let milliSecondEL = document.getElementById("milliSeconds");
+
+let milliSecondCounter = 0;
+let seconds = 0;
+
+let milliSecond = setInterval(() => {
+  milliSecondCounter++;
+  milliSecondEL.innerText = milliSecondCounter;
+  if (milliSecondCounter == 1000) {
+    seconds++;
+    secondsEl.innerText = seconds;
+    if (seconds <= 9) {
+      secondsEl.innerText = `0${seconds}:`;
+    } else {
+      secondsEl.innerText = seconds;
+    }
+    if (seconds <= 60) {
+      seconds = 0;
+      minutesEl.innerText = `${minutes + 1}:`;
+    }
+    milliSecondCounter = 0;
+  }
+}, 1);
+
+// strings to Number
+let hours = parseInt(hoursEl.innerText);
+let minutes = parseInt(minutesEl.innerText);
+
+if (hours <= 9) {
+  hoursEl.innerText = `0${hoursEl.innerText}`;
+} else if (hours > 12) {
+  hours = 1;
+  hoursEl.innerText = `0${hours}`;
 }
-
-const sayHi = function () {
-  console.log(5 + 6);
-  console.log("Hiiiiiiiiii");
-  console.log("This is Anonymous Function.");
-};
-
-// here sayHi is callBack function because it is passed as an callBack function.
-a(sayHi);
-
-let value1 = setTimeout('console.log("Hello - 1")', 1000);
-clearTimeout(value1);
-console.log(value1);
-let value2 = setTimeout('console.log("Hello - 2")', 2000);
-let value3 = setTimeout('console.log("Hello - 3")', 3000);
